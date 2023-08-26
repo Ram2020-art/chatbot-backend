@@ -3,7 +3,7 @@ import openai
 
 app = Flask(__name__)
 
-# Replace 'YOUR_API_KEY' with your actual OpenAI API key
+# Replace 'YOUR_API_KEY' with your OpenAI API key
 openai.api_key = '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'
 
 @app.route('/get_response', methods=['POST'])
@@ -23,4 +23,4 @@ def get_response():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-  
+    
