@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Frontend</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            border: 1px solid #ccc;
+            height: 400px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        .message {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chatContainer"></div>
+    <div>
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button id="sendMessage">Send</button>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chatContainer');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+
+        sendMessage.addEventListener('click', () => {
+            const userMessage = userInput.value;
+            userInput.value = '';
+            addToChat('user', userMessage);
+
+            // Call backend API and get response
+            // Replace this with your actual API call
+            // Example: fetch('/get_response', { method: 'POST', ... })
+            const assistantReply = 'Hello! I am your chatbot.';
+
+            addToChat('assistant', assistantReply);
+        });
+
+        function addToChat(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', role);
+            messageDiv.textContent = content;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>
