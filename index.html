@@ -22,9 +22,6 @@
             overflow-y: scroll;
             padding: 10px;
         }
-        .message {
-            margin: 10px 0;
-        }
         #userInput {
             width: 80%;
             padding: 10px;
@@ -45,7 +42,37 @@
         <button id="sendMessage">Send</button>
     </div>
     <script>
-        // JavaScript code here (same as previous version)
+        const chatContainer = document.getElementById('chatContainer');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+
+        sendMessage.addEventListener('click', async () => {
+            const userMessage = userInput.value;
+            userInput.value = '';
+            addToChat('user', userMessage);
+
+            const response = await fetch('https://your-backend-url/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: userMessage,
+                    history: chatHistory
+                })
+            });
+            const responseData = await response.json();
+            const assistantReply = responseData.reply;
+            addToChat('assistant', assistantReply);
+        });
+
+        const chatHistory = [];
+        function addToChat(role, content) {
+            chatHistory.push({ role, content });
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = role + ': ' + content;
+            chatContainer.appendChild(messageDiv);
+        }
     </script>
 </body>
 </html>
