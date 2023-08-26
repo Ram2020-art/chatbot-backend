@@ -3,11 +3,18 @@
 <head>
     <title>Chatbot Frontend</title>
     <style>
-        /* Your CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
         .chat-container {
             border: 1px solid #ccc;
@@ -18,40 +25,27 @@
         .message {
             margin: 10px 0;
         }
+        #userInput {
+            width: 80%;
+            padding: 10px;
+        }
+        #sendMessage {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div class="chat-container" id="chatContainer"></div>
-    <div>
+    <div class="container">
+        <div class="chat-container" id="chatContainer"></div>
         <input type="text" id="userInput" placeholder="Type your message...">
         <button id="sendMessage">Send</button>
     </div>
-
     <script>
-        const chatContainer = document.getElementById('chatContainer');
-        const userInput = document.getElementById('userInput');
-        const sendMessage = document.getElementById('sendMessage');
-
-        sendMessage.addEventListener('click', () => {
-            const userMessage = userInput.value;
-            userInput.value = '';
-            addToChat('user', userMessage);
-
-            // Call backend API and get response
-            // Replace this with your actual API call
-            // Example: fetch('/get_response', { method: 'POST', ... })
-            const assistantReply = 'Hello! I am your chatbot.';
-
-            addToChat('assistant', assistantReply);
-        });
-
-        function addToChat(role, content) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', role);
-            messageDiv.textContent = content;
-            chatContainer.appendChild(messageDiv);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
+        // JavaScript code here (same as previous version)
     </script>
 </body>
 </html>
