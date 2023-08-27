@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for the entire app
 
 # Replace 'YOUR_API_KEY' with your actual OpenAI API key
-openai.api_key = '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'
+openai.api_key = '#'
 
 @app.route('/get_response', methods=['POST'])
 def get_response():
